@@ -11,12 +11,22 @@ app.get("/", (req, res) => {
   res.send("You contacted root path");
 });
 
-app.get("/:username/:id", (req, res) => {
-  let { username, id } = req.params;
-  // console.log(req.params);
-  // res.send(`Welcome to the page of @${username}.`);
-  let code = `<h1>Welcome to the page of @${username}</h1>`;
-  res.send(code);
+// custom username like instagram/eleonmusk
+// app.get("/:username/:id", (req, res) => {
+//   let { username, id } = req.params;
+//   // console.log(req.params);
+//   // res.send(`Welcome to the page of @${username}.`);
+//   let code = `<h1>Welcome to the page of @${username}</h1>`;
+//   res.send(code);
+// });
+
+// search query
+app.get("/search", (req, res) => {
+  let { q } = req.query;
+  if (!q) res.send("Nothing searched");
+  res.send(`Search result for query: ${q}`);
+  // console.log(req.query);
+  // res.send("No Results");
 });
 
 // app.get("/apple", (req, res) => {
@@ -31,10 +41,12 @@ app.get("/:username/:id", (req, res) => {
 //   res.send("You contacted guava path");
 // });
 
+//handles rest of the pages
 // app.use((req, res) => {
 //   res.status(404).send("This route is invalid!");
 // });
 
+// sends html code as a response
 // app.use((req, res) => {
 //   console.log(req);
 //   console.log("Request Received");

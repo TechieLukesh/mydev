@@ -11,21 +11,29 @@ app.get("/", (req, res) => {
   res.send("You contacted root path");
 });
 
-app.get("/apple", (req, res) => {
-  res.send("You contacted apple path");
+app.get("/:username/:id", (req, res) => {
+  let { username, id } = req.params;
+  // console.log(req.params);
+  // res.send(`Welcome to the page of @${username}.`);
+  let code = `<h1>Welcome to the page of @${username}</h1>`;
+  res.send(code);
 });
 
-app.get("/orange", (req, res) => {
-  res.send("You contacted orange path");
-});
+// app.get("/apple", (req, res) => {
+//   res.send("You contacted apple path");
+// });
 
-app.get("/guava", (req, res) => {
-  res.send("You contacted guava path");
-});
+// app.get("/orange", (req, res) => {
+//   res.send("You contacted orange path");
+// });
 
-app.use((req, res) => {
-  res.status(404).send("This route is invalid!");
-});
+// app.get("/guava", (req, res) => {
+//   res.send("You contacted guava path");
+// });
+
+// app.use((req, res) => {
+//   res.status(404).send("This route is invalid!");
+// });
 
 // app.use((req, res) => {
 //   console.log(req);

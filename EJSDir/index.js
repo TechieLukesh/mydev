@@ -13,6 +13,13 @@ app.get("/", (req, res) => {
   res.render("home.ejs");
 });
 
+// random rolling of a dice
+
+app.get("/rolldice", (req, res) => {
+  let diceVal = Math.floor(Math.random() * 6) + 1;
+  res.render("rolldice.ejs", { diceVal });
+});
+
 // jaha se server run hota hai, wahi views dir dekhta hai
 
 // to fix it
